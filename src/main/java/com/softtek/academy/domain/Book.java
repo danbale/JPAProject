@@ -4,9 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.ColumnResult;
-import javax.persistence.ConstructorResult;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
@@ -18,31 +19,23 @@ import javax.persistence.Table;
 @Table(name = "books")
 @NamedNativeQueries({
 	@NamedNativeQuery(
-			name="showBooks",
-			query="SELECT "
-					+ "b.book_name as name, "
-					+ "b.book_genre as genre,"
-					+ "b.book_author as author, "
-					+ "b.book_editor as editorial, "
-					+ "b.book_lng as language, " 
-					+ "b.book_status as available"
-					+ "b.book_year as year"
-					+" FROM books b ",
-					resultSetMapping = "BooksMapping")})
+			name="updateBook",
+			query="UPDATE books b ,"
+					+ "SET"
+					+ "b.book_name= :name,"
+					+ "b.book_genre= :genre,"
+					+ "b.book_author= :author,"
+					+ "b.book_editorial= :editorial,"
+					+ "b.book_language= :language,"
+					+ "b.book_available= :available,"
+					+ "b.book_year= :year"
+					+ "WHERE b.book_id = :bookId",
+					
+					resultSetMapping = "updateBookResult")})
 @SqlResultSetMappings({
-	@SqlResultSetMapping(name="BooksMapping",
-			classes= {
-					@ConstructorResult(
-							targetClass = Book.class,
-							columns = {
-								@ColumnResult(name = "name", type = String.class),
-								@ColumnResult(name = "genre", type = String.class),
-								@ColumnResult(name = "author", type = String.class),
-								@ColumnResult(name = "editorial", type = String.class),
-								@ColumnResult(name = "language", type = String.class),
-								@ColumnResult(name = "available", type = Boolean.class),
-								@ColumnResult(name = "year", type =Integer.class)
-							})
+	@SqlResultSetMapping(name="updateBookResult", 
+			columns={ @ColumnResult(name="result")
+			
 			}),
 	@SqlResultSetMapping(name="UserMapping"),})
 public class Book implements Serializable{
@@ -50,6 +43,7 @@ public class Book implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "BOOK_ID")
 	private Long id;
 

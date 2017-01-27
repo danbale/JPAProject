@@ -1,4 +1,4 @@
-package com.softtek.academy;
+package com.softtek.academy.web;
 
 import java.text.DateFormat;
 import java.util.Date;

@@ -19,10 +19,6 @@ public class UserDetails extends Audit {
 
 	@Column(name = "USER_ORDERS")
 	private Long orders;
-	
-	
-	
-	
 
 	@Override
 	public int hashCode() {
@@ -98,8 +94,5 @@ public class UserDetails extends Audit {
 	public void setOrders(Long orders) {
 		this.orders = orders;
 	}
-	
-	
-	
-	
+
 }
