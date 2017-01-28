@@ -1,17 +1,19 @@
 package com.softtek.academy.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "PICKBOOK")
-public class PickBook extends Audit {
+public class PickBook extends Audit implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -19,7 +21,7 @@ public class PickBook extends Audit {
 	@Column(name = "PBOOK_ID")
 	private Long id;
 
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "ORDER_ID")
 	private Order order;
 

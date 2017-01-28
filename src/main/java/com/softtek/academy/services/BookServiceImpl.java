@@ -3,10 +3,12 @@ package com.softtek.academy.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.softtek.academy.domain.Book;
 import com.softtek.academy.repository.BookRepository;
 
+@Component 
 public class BookServiceImpl implements BookService {
 
 	@Autowired
@@ -24,10 +26,6 @@ public class BookServiceImpl implements BookService {
 		return bookRepository.findOne(id);
 	}
 
-	@Override
-	public void createBook() {
-		bookRepository.createBook();
-	}
 
 	@Override
 	public boolean updateBook(Book book) {
@@ -37,6 +35,12 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public void deteleBook(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createBook() {
 		// TODO Auto-generated method stub
 		
 	}

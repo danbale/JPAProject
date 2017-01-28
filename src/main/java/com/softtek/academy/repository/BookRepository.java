@@ -11,7 +11,7 @@ import com.softtek.academy.domain.Book;
 public interface BookRepository extends JpaRepository<Book, Long>{
 
 	
-	public void createBook();
+	//public void createBook();
 	
 	@Query(name="updateBook", nativeQuery=true)
 	public boolean updateBook(@Param ("name") String name,
@@ -23,6 +23,6 @@ public interface BookRepository extends JpaRepository<Book, Long>{
 							  @Param("year")String year,
 							  @Param("bookId")Long id);
 	
-	public void deteleBook(Long id);
+	//public void deteleBook(Long id);
 	
 }

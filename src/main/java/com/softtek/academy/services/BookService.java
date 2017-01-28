@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.softtek.academy.domain.Book;
 
+
 public interface BookService {
 
 	public List<Book> getAllBooks();

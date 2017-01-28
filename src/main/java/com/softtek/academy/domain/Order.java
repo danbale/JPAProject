@@ -1,17 +1,19 @@
 package com.softtek.academy.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ORDERS")
-public class Order extends Audit {
+@Table(name = "ORDER")
+public class Order extends Audit implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -20,7 +22,7 @@ public class Order extends Audit {
 	@Column(name = "ORDER_ID")
 	private Long id;
 
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "USER_ID")
 	private User user;
 
